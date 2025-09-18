@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Recommendations - SkillIntern</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Overlay for Sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="nav-logo">SkillIntern</a>
+            <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="recommend.html"><i class="fas fa-star"></i> Recommendations</a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+        </ul>
+        <div class="contact-form">
+            <h4>Contact Us</h4>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="3" placeholder="Your Message" required></textarea>
+                <button type="submit" class="gradient-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header & Navbar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-left">
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="nav-logo">SkillIntern</a>
+            </div>
+
+            <!-- This div will be populated by JavaScript -->
+            <div class="nav-right" id="nav-actions">
+                <!-- Example: <a href="login.html" class="nav-btn">Login</a> -->
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="recommendations" class="content-section">
+            <h2>Your Top Recommendations</h2>
+            <p>Based on your profile, these internships are the best fit for you.</p>
+            <div class="internship-grid" id="recommended-internships">
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="other-opportunities" class="content-section">
+            <h2>Other Opportunities</h2>
+            <p>Explore more internships available on our portal.</p>
+            <div class="internship-grid" id="other-internships">
+            </div>
+        </section>
+    </main>
+    <script src="data.js"></script> 
+    <script src="script.js"></script>
+    <script src="recommend.js"></script>
+
+</body>
+
+</html>

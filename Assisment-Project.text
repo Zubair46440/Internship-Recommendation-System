@@ -1,0 +1,74 @@
+
+
+Project Discription
+
+=> i want to create a website same as a PM intership yojana portal but with some changes in it.
+
+=> now build a Home page first in thi home page all detail are shown in it like about he website, eligible,benifit,gallary,social media gallary, Dashbords and footer 
+
+=> in Home page, Make elegibile and banefitin same section and use flex property to create 2 cloum degine ans inside the both boxex 2x2 grid system should yuo use 
+
+=> In gallary use auto image changer and use some 10 rendom images related to job or work done by person 
+
+=> In Sogial mesia gallary use insta, facebook, twitter, youtube, Threads, X platefom news
+
+=> in dashbord use 2 colum lay out in left side use india map and in right side dashbord detail also in dashbord detail if u use numbers so use some js to show number auto increse
+
+=> also use navbar +slidbar combo in navbar Website name,hamburger icon, login and signup btn is present and in slidebar when put home,recomendation, and contect us form also 
+
+=> I want to add a full login, Signup page after that Person fill his personal detail like education skill and language also the person addd the resume in the regester portal and submit the data into a portal .
+
+=> Create a basic home(with About,eligible,benigit,gallary,social media gallary, dashbord and footer in a simgle page ) page layout of this website let move to the main part whic is this
+
+=> After that using the data, the website recommend the 4 to 5 best intership to the person in a card form, and also the other job show below the recomended internship
+
+=> Card Details :- this card show some details like (Job category, Job title, location, stiphand, post date , alos show the percentage how much u eligible for this job) and view more btn 
+
+=> after clicking the btn the all the detail about the intership will shown in this page also we use some sample data of intership to use in this website (so dont create a to many pages just create one and link the data set to the webpage   )
+
+=> Full detail Page :- this page show detail like ( title, category, company_name, company_about, location, stipend, duration, skills_required, apply_by, posted_on, mode, openings, internship_description) also their are to btn one is "apply" btn and their is another btn whic show where u "lack for this job"
+
+=> Now AI intigration part 
+
+integrate Ai in Lacking skill page where the peerson get recommended where u lack an what u have to improve for this intership also it suggest some Youtube video to learn those skill where the persone lack)
+also use chat bot in this Project where person can chat with the Bot to ask their Quary
+
+=> THEAME
+Use html,css,js to create a full website
+use this color light and clean combor and create a light color theam 
+
+
+Also focus on make a create a ClaenUI, userfriendly, attractive, responsive and fully functionaly website 
+also use gradiant color on btn and icons 
+use Fontawason for icons
+
+
+=> File structure
+
+frontend/
+├── public/
+│   ├── index.html            # Main HTML file for the React app
+│   └── ...                   # Other public assets like favicons
+├── src/
+│   ├── components/
+│   │   ├── Chatbot.jsx       # The floating chatbot component
+│   │   ├── Footer.jsx        # The site-wide footer
+│   │   ├── Header.jsx        # The main navigation bar
+│   │   ├── Icon.jsx          # A reusable component for FontAwesome icons
+│   │   ├── InternshipCard.jsx # Card to display internship summary
+│   │   └── Sidebar.jsx       # The slide-out sidebar menu
+│   ├── pages/
+│   │   ├── Contact.jsx       # The Contact Us page
+│   │   ├── Dashboard.jsx     # The user dashboard page
+│   │   ├── Home.jsx          # The main landing page
+│   │   ├── InternshipDetail.jsx # Detailed view of a single internship
+│   │   ├── LackingSkills.jsx # The AI analysis page
+│   │   ├── Login.jsx         # The user login page
+│   │   ├── Profile.jsx       # User profile creation/editing page
+│   │   ├── Recommendations.jsx # The internship recommendations feed
+│   │   └── Signup.jsx        # The user registration page
+│   ├── App.jsx                 # Main component with routing logic
+│   ├── data.js               # To hold any static frontend data (like sample user)
+│   ├── index.css             # Global styles (Tailwind CSS imports)
+│   └── index.js              # Entry point for the React application
+└── package.json              # Frontend dependencies and scripts

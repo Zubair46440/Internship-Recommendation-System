@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - SkillIntern</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-form-box">
+            <h2 class="auth-title">Create Your Account</h2>
+            <p class="auth-subtitle">Join SkillIntern to find your dream internship.</p>
+            <form id="signup-form">
+                <div class="input-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" required>
+                </div>
+                <button class="auth-btn" type="submit" class="auth-btn gradient-btn">Create Account</button>
+            </form>
+            <p class="auth-switch">Already have an account? <a href="login.html">Log In</a></p>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>

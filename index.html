@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillIntern - Your Internship Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- ==================== Universal Navigation ==================== -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="nav-logo">SkillIntern</a>
+            <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="recommend.html"><i class="fas fa-star"></i> Recommendations</a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+        </ul>
+        <div class="contact-form">
+            <h4>Contact Us</h4>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="3" placeholder="Your Message" required></textarea>
+                <button type="submit" class="gradient-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header & Navbar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-left">
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="nav-logo">SkillIntern</a>
+            </div>
+            
+            <!-- This div will be populated by JavaScript -->
+            <div class="nav-right" id="nav-actions">
+                <!-- Example: <a href="login.html" class="nav-btn">Login</a> -->
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <h1>Find Your Dream Internship Today</h1>
+            <p>Connecting talented students with top companies across India.</p>
+        </section>
+
+        <section id="about" class="content-section">
+            <h2>About Our Portal</h2>
+            <p>SkillIntern is a dedicated platform designed to bridge the gap between students seeking valuable work
+                experience and companies looking for fresh talent. Inspired by the PM Internship Yojana, we aim to
+                provide a streamlined, user-friendly experience for finding and posting internships nationwide.</p>
+        </section>
+
+        <hr>
+
+        <section id="eligibility-benefits" class="content-section">
+            <h2>Eligibility & Benefits</h2>
+            <div class="flex-container">
+                <div class="flex-column">
+                    <h3>Who is Eligible?</h3>
+                    <div class="grid-container">
+                        <div class="grid-item">
+                            <i class="fas fa-user-graduate"></i>
+                            <h4>Students</h4>
+                            <p>Currently enrolled in any recognized university or college.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-book-open"></i>
+                            <h4>Recent Graduates</h4>
+                            <p>Graduated within the last 2 years and looking for experience.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Skill Seekers</h4>
+                            <p>Anyone looking to learn new skills through practical work.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-flag"></i>
+                            <h4>Indian Citizens</h4>
+                            <p>Must be a citizen of India to apply for listed opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-column">
+                    <h3>What are the Benefits?</h3>
+                    <div class="grid-container">
+                        <div class="grid-item">
+                            <i class="fas fa-briefcase"></i>
+                            <h4>Real-World Experience</h4>
+                            <p>Gain hands-on experience in your field of interest.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <h4>Stipend</h4>
+                            <p>Earn a stipend while you learn and contribute.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-network-wired"></i>
+                            <h4>Networking</h4>
+                            <p>Connect with industry professionals and build your network.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-certificate"></i>
+                            <h4>Certification</h4>
+                            <p>Receive a certificate upon successful completion of the internship.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="gallery" class="content-section">
+            <h2>Glimpses of Work</h2>
+            <div class="gallery-container">
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="social" class="content-section">
+            <h2>Stay Connected</h2>
+            <div class="social-grid">
+                <div class="social-card instagram"><i class="fab fa-instagram"></i>
+                    <p>Follow our journey on Instagram for daily updates and stories.</p>
+                </div>
+                <div class="social-card facebook"><i class="fab fa-facebook-f"></i>
+                    <p>Join our Facebook community for discussions and news.</p>
+                </div>
+                <div class="social-card x-twitter"><i class="fab fa-twitter"></i>
+                    <p>Get instant news and announcements on X (formerly Twitter).</p>
+                </div>
+                <div class="social-card youtube"><i class="fab fa-youtube"></i>
+                    <p>Watch success stories and tutorials on our YouTube channel.</p>
+                </div>
+                <div class="social-card threads"><i class="fab fa-threads"></i>
+                    <p>Engage in conversations on our new Threads channel.</p>
+                </div>
+                <div class="social-card linkedin"><i class="fab fa-linkedin-in"></i>
+                    <p>Connect with us professionally on LinkedIn.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="dashboard" class="content-section">
+            <h2>Our Impact Dashboard</h2>
+            <div class="dashboard-container">
+                <div class="dashboard-map">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvIb7I_bCPUESJurA4TP3S1j4s7cjxrnVffw&s"
+                        alt="Map of India">
+                </div>
+                <div class="dashboard-stats">
+                    <div class="stat-item">
+                        <h3>Students Registered</h3>
+                        <p class="counter" data-target="150000">0</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Companies Onboarded</h3>
+                        <p class="counter" data-target="5200">0</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Internships Posted</h3>
+                        <p class="counter" data-target="25000">0</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Successful Placements</h3>
+                        <p class="counter" data-target="8500">0</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="chatbot-toggler">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

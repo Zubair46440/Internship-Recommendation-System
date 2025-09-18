@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - SkillIntern</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="nav-logo">SkillIntern</a>
+            <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="recommend.html"><i class="fas fa-star"></i> Recommendations</a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+        </ul>
+        <div class="contact-form">
+            <h4>Contact Us</h4>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="3" placeholder="Your Message" required></textarea>
+                <button type="submit" class="gradient-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header & Navbar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-left">
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="nav-logo">SkillIntern</a>
+            </div>
+            
+            <!-- This div will be populated by JavaScript -->
+            <div class="nav-right" id="nav-actions">
+                <!-- Example: <a href="login.html" class="nav-btn">Login</a> -->
+            </div>
+        </nav>
+    </header>
+    <!-- ============================================================= -->
+
+    <main class="profile-container">
+        <div class="profile-header">
+            <h1>Welcome, <span id="user-name-display">User</span>!</h1>
+            <p id="user-headline-display">Complete your profile to get the best internship recommendations.</p>
+            <a href="profile-edit.html" class="edit-profile-link gradient-btn">
+                <i class="fas fa-pencil-alt"></i> Edit Profile
+            </a>
+        </div>
+
+        <div class="profile-grid">
+            <!-- Skills Card -->
+            <div class="profile-card">
+                <h3><i class="fas fa-cogs"></i> My Skills</h3>
+                <div class="skills-tags" id="skills-display">
+                    <!-- Skills will be dynamically added here -->
+                    <p class="placeholder-text">Add your skills to see them here.</p>
+                </div>
+            </div>
+
+            <!-- Education Card -->
+            <div class="profile-card">
+                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                <div id="education-display">
+                    <p class="placeholder-text">Add your education details.</p>
+                </div>
+            </div>
+
+            <!-- Resume Card -->
+            <div class="profile-card">
+                <h3><i class="fas fa-file-alt"></i> My Resume</h3>
+                <div id="resume-display">
+                    <p class="placeholder-text">Upload your resume to view it here.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <script src="profile.js"></script>
+</body>
+
+</html>
