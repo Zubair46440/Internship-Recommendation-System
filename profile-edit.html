@@ -25,15 +25,7 @@
             <li><a href="recommend.html"><i class="fas fa-star"></i> Recommendations</a></li>
             <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
         </ul>
-        <div class="contact-form">
-            <h4>Contact Us</h4>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="3" placeholder="Your Message" required></textarea>
-                <button type="submit" class="gradient-btn">Send Message</button>
-            </form>
-        </div>
+
     </div>
 
     <!-- Header & Navbar -->
@@ -45,7 +37,7 @@
                 </button>
                 <a href="index.html" class="nav-logo">SkillIntern</a>
             </div>
-            
+
             <!-- This div will be populated by JavaScript -->
             <div class="nav-right" id="nav-actions">
                 <!-- Example: <a href="login.html" class="nav-btn">Login</a> -->
@@ -60,6 +52,11 @@
             <fieldset>
                 <legend><i class="fas fa-user-circle"></i> Personal Details</legend>
                 <div class="input-group">
+                    <label for="profile-image">Profile Image</label>
+                    <input type="file" id="profile-image" accept="image/*">
+                    <small>Uploading a new image will replace the old one.</small>
+                </div>
+                <div class="input-group">
                     <label for="profile-name">Full Name</label>
                     <input type="text" id="profile-name" placeholder="e.g., Alex Doe" required>
                 </div>
@@ -68,43 +65,69 @@
                     <input type="email" id="profile-email" placeholder="you@example.com" disabled>
                 </div>
                 <div class="input-group">
+                    <label for="profile-mobile">Mobile Number</label>
+                    <input type="tel" id="profile-mobile" placeholder="e.g., +91 9876543210">
+                </div>
+                <div class="input-group">
+                    <label>Location</label>
+                    <input type="text" id="profile-country" placeholder="Country">
+                    <input type="text" id="profile-state" placeholder="State">
+                    <input type="text" id="profile-city" placeholder="City">
+                </div>
+                <div class="input-group">
                     <label for="profile-headline">Headline</label>
-                    <input type="text" id="profile-headline"
-                        placeholder="e.g., Aspiring Web Developer | B.Tech Student">
+                    <input type="text" id="profile-headline" placeholder="e.g., Frontend Developer Intern">
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+                <legend><i class="fas fa-graduation-cap"></i> Education</legend>
+
+                <!-- School -->
+                <div class="input-group">
+                    <label for="school-name">School Name</label>
+                    <input type="text" id="school-name" placeholder="e.g., ABC High School">
+                </div>
+                <div class="input-group">
+                    <label for="school-percentage">Percentage / CGPA</label>
+                    <input type="text" id="school-percentage" placeholder="e.g., 92%">
+                </div>
+
+                <!-- College -->
+                <div class="input-group">
+                    <label for="college-degree">Degree</label>
+                    <input type="text" id="college-degree" placeholder="e.g., B.Tech">
+                </div>
+                <div class="input-group">
+                    <label for="college-name">College Name</label>
+                    <input type="text" id="college-name" placeholder="e.g., XYZ University">
+                </div>
+                <div class="input-group">
+                    <label for="college-cgpa">Percentage / CGPA</label>
+                    <input type="text" id="college-cgpa" placeholder="e.g., 8.7 CGPA">
                 </div>
             </fieldset>
 
             <!-- Skills -->
             <fieldset>
                 <legend><i class="fas fa-cogs"></i> Skills</legend>
-                <div class="input-group">
-                    <label for="profile-skills">Enter your skills (comma-separated)</label>
-                    <input type="text" id="profile-skills" placeholder="e.g., HTML, CSS, JavaScript, React">
-                </div>
+                <div class="input-group"> <label for="profile-skills">Enter your skills (comma-separated)</label> <input
+                        type="text" id="profile-skills" placeholder="e.g., HTML, CSS, JavaScript, React"> </div>
             </fieldset>
-
-            <!-- Education -->
             <fieldset>
-                <legend><i class="fas fa-graduation-cap"></i> Education</legend>
+                <legend><i class="fas fa-tools"></i> Tools & Platforms</legend>
                 <div class="input-group">
-                    <label for="profile-education-degree">Degree</label>
-                    <input type="text" id="profile-education-degree" placeholder="e.g., Bachelor of Technology">
-                </div>
-                <div class="input-group">
-                    <label for="profile-education-institution">Institution Name</label>
-                    <input type="text" id="profile-education-institution"
-                        placeholder="e.g., Delhi Technological University">
+                    <label for="tools-used">Tools Used (comma-separated)</label>
+                    <input type="text" id="tools-used" placeholder="e.g., GitHub, PowerBI, Excel, MS Office, Canva">
                 </div>
             </fieldset>
-
             <!-- Resume -->
             <fieldset>
                 <legend><i class="fas fa-file-alt"></i> Resume</legend>
-                <div class="input-group">
-                    <label for="profile-resume">Upload your resume (PDF only)</label>
-                    <input type="file" id="profile-resume" accept=".pdf">
-                    <small>Uploading a new resume will replace the old one.</small>
-                </div>
+                <div class="input-group"> <label for="profile-resume">Upload your resume (PDF only)</label> <input
+                        type="file" id="profile-resume" accept=".pdf"> <small>Uploading a new resume will replace the
+                        old one.</small> </div>
             </fieldset>
 
             <button type="submit" class="auth-btn gradient-btn">Save Profile</button>

@@ -1,5 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
+    // Hero Typing
+    const texts = ["Your Dream Internship", "Your Career Growth", "Top Companies"];
+    let count = 0, index = 0, currentText = "", letter = "";
+    (function type() {
+        if (count === texts.length) count = 0;
+        currentText = texts[count];
+        letter = currentText.slice(0, ++index);
+        document.getElementById('typed-text').textContent = letter;
+        if (letter.length === currentText.length) { count++; index = 0; setTimeout(type, 1500); }
+        else setTimeout(type, 150);
+    }());
     // ==================== Auto Image Changer for Gallery ====================
     const galleryContainer = document.querySelector('.gallery-container');
     const imageUrls = [
@@ -9,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         'https://idreamcareer.com/wp-content/uploads/2020/03/Tips-for-Interns.jpg',
         'https://idreamcareer.com/wp-content/uploads/2020/03/Tips-for-Interns.jpg',
         'https://insight.ieeeusa.org/wp-content/uploads/sites/2/2022/06/Internship-780x470.jpg',
-        
+
     ];
     let currentImageIndex = 0;
 
@@ -39,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const animateCounter = (counter) => {
         const target = +counter.getAttribute('data-target');
-        
+
         const updateCount = () => {
             const count = +counter.innerText;
             const increment = target / speed;
@@ -53,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
         updateCount();
     };
-    
+
     // Use Intersection Observer to trigger animation only when visible
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Authentication Check: Redirect if not logged in
     if (localStorage.getItem('isLoggedIn') !== 'true') {
         window.location.href = 'login.html';
         return;
@@ -7,68 +6,110 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const profileForm = document.getElementById('profile-edit-form');
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
-    
-    // --- Pre-fill form with existing data ---
+    const savedProfile = JSON.parse(localStorage.getItem('userProfileData'));
+
+    // --- get all inputs ---
     const profileName = document.getElementById('profile-name');
     const profileEmail = document.getElementById('profile-email');
     const profileHeadline = document.getElementById('profile-headline');
     const profileSkills = document.getElementById('profile-skills');
-    const profileDegree = document.getElementById('profile-education-degree');
-    const profileInstitution = document.getElementById('profile-education-institution');
+    const profileImage = document.getElementById('profile-image');
+    const profileMobile = document.getElementById('profile-mobile');
+    const profileCountry = document.getElementById('profile-country');
+    const profileState = document.getElementById('profile-state');
+    const profileCity = document.getElementById('profile-city');
+    const schoolName = document.getElementById('school-name');
+    const schoolPercentage = document.getElementById('school-percentage');
+    const collegeDegree = document.getElementById('college-degree');
+    const collegeName = document.getElementById('college-name');
+    const collegeCGPA = document.getElementById('college-cgpa');
+    const toolsUsed = document.getElementById('tools-used');
 
-    // Pre-fill email and disable it
-    if (user && user.email) {
-        profileEmail.value = user.email;
-    }
-    
-    // Load the rest of the profile data
-    const savedProfile = JSON.parse(localStorage.getItem('userProfileData'));
+    // --- pre-fill ---
+    if (user?.email) profileEmail.value = user.email;
     if (savedProfile) {
         profileName.value = savedProfile.name || user.fullname;
-        profileHeadline.value = savedProfile.headline || '';
-        profileSkills.value = savedProfile.skills ? savedProfile.skills.join(', ') : '';
-        profileDegree.value = savedProfile.degree || '';
-        profileInstitution.value = savedProfile.institution || '';
+        if(profileHeadline) profileHeadline.value = savedProfile.headline || '';
+        profileSkills.value = savedProfile.skills?.join(', ') || '';
+        profileMobile.value = savedProfile.mobile || '';
+        profileCountry.value = savedProfile.location?.country || '';
+        profileState.value = savedProfile.location?.state || '';
+        profileCity.value = savedProfile.location?.city || '';
+        schoolName.value = savedProfile.school?.name || '';
+        schoolPercentage.value = savedProfile.school?.percentage || '';
+        collegeDegree.value = savedProfile.college?.degree || '';
+        collegeName.value = savedProfile.college?.name || '';
+        collegeCGPA.value = savedProfile.college?.cgpa || '';
+        toolsUsed.value = savedProfile.tools?.join(', ') || '';
     } else {
         profileName.value = user.fullname;
     }
 
-    // --- Form submission logic ---
+    // --- form submit ---
     profileForm.addEventListener('submit', (e) => {
         e.preventDefault();
-
-        const resumeFile = document.getElementById('profile-resume').files[0];
+        const resumeFile = document.getElementById('profile-resume')?.files[0];
 
         const profileData = {
-            name: profileName.value,
-            headline: profileHeadline.value,
-            // Split skills string into an array, trimming whitespace
-            skills: profileSkills.value.split(',').map(skill => skill.trim()).filter(skill => skill),
-            degree: profileDegree.value,
-            institution: profileInstitution.value,
-            resume: savedProfile ? savedProfile.resume : null // Keep old resume if new one isn't uploaded
+            name: profileName?.value || '',
+            headline: profileHeadline?.value || '',
+            skills: profileSkills?.value.split(',').map(s => s.trim()).filter(Boolean) || [],
+            mobile: profileMobile?.value || '',
+            location: {
+                country: profileCountry?.value || '',
+                state: profileState?.value || '',
+                city: profileCity?.value || ''
+            },
+            school: {
+                name: schoolName?.value || '',
+                percentage: schoolPercentage?.value || ''
+            },
+            college: {
+                degree: collegeDegree?.value || '',
+                name: collegeName?.value || '',
+                cgpa: collegeCGPA?.value || ''
+            },
+            tools: toolsUsed?.value.split(',').map(t => t.trim()).filter(Boolean) || [],
+            image: savedProfile?.image || null,
+            imageName: savedProfile?.imageName || null,
+            resume: savedProfile?.resume || null,
+            resumeName: savedProfile?.resumeName || null
         };
 
-        // Handle file upload using FileReader
-        if (resumeFile) {
-            const reader = new FileReader();
-            reader.readAsDataURL(resumeFile); // Converts file to a Base64 string
-            reader.onload = () => {
-                profileData.resume = reader.result;
-                profileData.resumeName = resumeFile.name; // Store the file name
-                saveProfileAndRedirect(profileData);
-            };
-            reader.onerror = () => {
-                alert('Error reading file.');
-            };
-        } else {
-            saveProfileAndRedirect(profileData);
+        const promises = [];
+
+        if (profileImage?.files[0]) {
+            promises.push(new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    profileData.image = reader.result;
+                    profileData.imageName = profileImage.files[0].name;
+                    resolve();
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(profileImage.files[0]);
+            }));
         }
+
+        if (resumeFile) {
+            promises.push(new Promise((resolve, reject) => {
+                const readerResume = new FileReader();
+                readerResume.onload = () => {
+                    profileData.resume = readerResume.result;
+                    profileData.resumeName = resumeFile.name;
+                    resolve();
+                };
+                readerResume.onerror = reject;
+                readerResume.readAsDataURL(resumeFile);
+            }));
+        }
+
+        Promise.all(promises).then(() => {
+            localStorage.setItem('userProfileData', JSON.stringify(profileData));
+            alert('Profile saved successfully!');
+            window.location.href = 'profile.html';
+        }).catch(() => {
+            alert('Error saving files. Please try again.');
+        });
     });
 });
-
-function saveProfileAndRedirect(data) {
-    localStorage.setItem('userProfileData', JSON.stringify(data));
-    alert('Profile saved successfully!');
-    window.location.href = 'profile.html';
-}

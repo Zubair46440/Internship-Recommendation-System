@@ -1,78 +1,98 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- AUTHENTICATION CHECK ---
     if (localStorage.getItem('isLoggedIn') !== 'true') {
         window.location.href = 'login.html';
-        return; // Stop script execution
+        return;
     }
 
-    // --- RENDER PROFILE DATA ---
     const profileData = JSON.parse(localStorage.getItem('userProfileData'));
-    
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    // DOM Elements
     const userNameDisplay = document.getElementById('user-name-display');
     const userHeadlineDisplay = document.getElementById('user-headline-display');
+    const profileImageDisplay = document.getElementById('user-image-display');
+    const profileEmailDisplay = document.getElementById('user-email-display');
+    const profileMobileDisplay = document.getElementById('user-mobile-display');
+    const profileLocationDisplay = document.getElementById('user-location-display');
+
     const skillsDisplay = document.getElementById('skills-display');
     const educationDisplay = document.getElementById('education-display');
+    const toolsDisplay = document.getElementById('tools-display');
     const resumeDisplay = document.getElementById('resume-display');
 
     if (profileData) {
-        // Display Name and Headline
-        userNameDisplay.textContent = profileData.name || 'User';
+        // Name & Headline
+        userNameDisplay.textContent = profileData.name || user.fullname;
         userHeadlineDisplay.textContent = profileData.headline || 'Add a headline to stand out!';
 
-        // Display Skills
-        skillsDisplay.innerHTML = ''; // Clear placeholder
-        if (profileData.skills && profileData.skills.length > 0) {
+        // Image
+        profileImageDisplay.src = profileData.image || 'default-avatar.png';
+
+        // Email & Mobile
+        profileEmailDisplay.textContent = user.email || '';
+        profileMobileDisplay.textContent = profileData.mobile || 'Not provided';
+
+        // Location
+        if (profileData.location) {
+            const { country, state, city } = profileData.location;
+            profileLocationDisplay.textContent = `${city || ''}, ${state || ''}, ${country || ''}`;
+        }
+
+        // Skills
+        skillsDisplay.innerHTML = '';
+        if (profileData.skills && profileData.skills.length) {
             profileData.skills.forEach(skill => {
-                const skillTag = document.createElement('span');
-                skillTag.className = 'skill-tag';
-                skillTag.textContent = skill;
-                skillsDisplay.appendChild(skillTag);
+                const span = document.createElement('span');
+                span.className = 'skill-tag';
+                span.textContent = skill;
+                skillsDisplay.appendChild(span);
             });
-        } else {
-            skillsDisplay.innerHTML = '<p class="placeholder-text">No skills added yet.</p>';
-        }
+        } else skillsDisplay.innerHTML = '<p class="placeholder-text">No skills added yet.</p>';
 
-        // Display Education
-        educationDisplay.innerHTML = ''; // Clear placeholder
-        if (profileData.degree && profileData.institution) {
-            educationDisplay.innerHTML = `
-                <p><strong>${profileData.degree}</strong></p>
-                <p>${profileData.institution}</p>
+        // Education
+        educationDisplay.innerHTML = '';
+        if (profileData.school?.name) {
+            educationDisplay.innerHTML += `
+                <p><strong>School:</strong> ${profileData.school.name}</p>
+                <p><strong>Percentage:</strong> ${profileData.school.percentage || 'N/A'}</p>
             `;
-        } else {
-            educationDisplay.innerHTML = '<p class="placeholder-text">No education details added.</p>';
+        }
+        if (profileData.college?.name) {
+            educationDisplay.innerHTML += `
+                <p><strong>Degree:</strong> ${profileData.college.degree || 'N/A'}</p>
+                <p><strong>College:</strong> ${profileData.college.name}</p>
+                <p><strong>CGPA:</strong> ${profileData.college.cgpa || 'N/A'}</p>
+            `;
         }
 
-        // Display Resume
-        resumeDisplay.innerHTML = ''; // Clear placeholder
+        // Tools
+        toolsDisplay.innerHTML = '';
+        if (profileData.tools && profileData.tools.length) {
+            profileData.tools.forEach(tool => {
+                const span = document.createElement('span');
+                span.className = 'tool-tag';
+                span.textContent = tool;
+                toolsDisplay.appendChild(span);
+            });
+        } else toolsDisplay.innerHTML = '<p class="placeholder-text">No tools added yet.</p>';
+
+        // Resume
+        resumeDisplay.innerHTML = '';
         if (profileData.resume) {
             resumeDisplay.innerHTML = `
                 <p><strong>${profileData.resumeName || 'resume.pdf'}</strong> is on file.</p>
                 <a href="${profileData.resume}" download="${profileData.resumeName || 'resume.pdf'}" class="edit-btn">Download Resume</a>
             `;
-        } else {
-            resumeDisplay.innerHTML = '<p class="placeholder-text">No resume uploaded.</p>';
-        }
-
+        } else resumeDisplay.innerHTML = '<p class="placeholder-text">No resume uploaded.</p>';
     } else {
-         // Default state if no profile data exists
-         const user = JSON.parse(localStorage.getItem('loggedInUser'));
-         userNameDisplay.textContent = user.fullname;
-    }
-
-
-    // --- LOGOUT LOGIC (remains the same) ---
-    const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('loggedInUser');
-            // Optional: Clear profile data on logout
-            // localStorage.removeItem('userProfileData'); 
-            alert("You have been logged out.");
-            window.location.href = 'login.html';
-        });
+        // Fallback if profileData not set
+        userNameDisplay.textContent = user.fullname || 'User';
+        profileEmailDisplay.textContent = user.email || '';
+        profileImageDisplay.src = 'default-avatar.png';
+        skillsDisplay.innerHTML = '<p class="placeholder-text">No skills added yet.</p>';
+        educationDisplay.innerHTML = '<p class="placeholder-text">No education added yet.</p>';
+        toolsDisplay.innerHTML = '<p class="placeholder-text">No tools added yet.</p>';
+        resumeDisplay.innerHTML = '<p class="placeholder-text">No resume uploaded.</p>';
     }
 });
